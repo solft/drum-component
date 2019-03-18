@@ -1,0 +1,17 @@
+button {
+  width: 2em;
+  height: 2em;
+  margin: 2px;
+}
+
+.kick {
+  border: none;
+}
+
+.click0 {
+  background: tomato;
+}
+
+.click1 {
+  background: greenyellow;
+}

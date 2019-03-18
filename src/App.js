@@ -24,12 +24,21 @@ class App extends Component {
        }
     }
   }
+
+  changePattern = (drum, time) => {
+    console.log('changePattern check')
+    let copyPattern = Object.assign({}, this.state.pattern)
+    copyPattern[drum][time] = copyPattern[drum][time] ? 0 : 1
+    this.setState({
+      pattern: copyPattern
+    })
+  }
   
   render() {
     return (
       <div className="App">
         <h1>Drum Pad</h1>
-        <DrumPad playerLength="16" className="drum" />
+        <DrumPad changePattern={this.changePattern} pattern={this.state.pattern} playerLength="10" className="drum" />
         <br/>
         <br/>
         <Pattern pattern={this.state.pattern} />
