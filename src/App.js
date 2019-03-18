@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import DrumPad from './components/DrumPad';
 import Pattern from './components/Pattern';
-import { PatternProvider } from './contexts/PatternContext'
 
 import './App.css'
 
@@ -28,15 +27,13 @@ class App extends Component {
   
   render() {
     return (
-      <PatternProvider value={this.state.pattern}>
-        <div className="App">
-          <h1>Drum Pad</h1>
-          <DrumPad className="drum" />
-          <br/>
-          <br/>
-          <Pattern pattern={this.state.pattern} />
-        </div>
-      </PatternProvider>
+      <div className="App">
+        <h1>Drum Pad</h1>
+        <DrumPad playerLength="16" className="drum" />
+        <br/>
+        <br/>
+        <Pattern pattern={this.state.pattern} />
+      </div>
     );
   }
 }

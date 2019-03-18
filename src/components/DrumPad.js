@@ -9,7 +9,7 @@ class DrumPad extends Component {
       return (
         <div key={e}>
           <span>{e}</span>
-          <DrumLine playerLength="32" drum={e} />
+          <DrumLine playerLength={this.props.playerLength} drum={e} />
         </div>
       )
     })

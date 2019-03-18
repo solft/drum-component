@@ -3,6 +3,14 @@ import React, { Component } from 'react'
 // this.props.playerLength : 재생 길이(시간)
 // this.props.drum : 재생 드럼 종류
 class DrumLine extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       
+    }
+  }
+  
   clickHandler = (time, drum) => {
     console.log(`this button is ${drum}의 ${time} 시간 째 버튼 입니다.`)
   }
