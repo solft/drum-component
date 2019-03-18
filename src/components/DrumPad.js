@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import DrumLine from './DrumLine';
 
+import './DrumPad.css'
+
 class DrumPad extends Component {
   render() {
     // const drumPad = drum.map(e => {
@@ -14,7 +16,7 @@ class DrumPad extends Component {
     const drumPad = Object.entries(this.props.pattern).map(drumLine => {
       return (
         <div key={drumLine[0]}>
-          {drumLine[0]}
+          <span className="drumname">{drumLine[0]}</span>
           <DrumLine changePattern={this.props.changePattern} drumName={drumLine[0]} drumLine={drumLine[1]} />
         </div>
       )

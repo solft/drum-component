@@ -1,0 +1,7 @@
+.drumname {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 2px solid black;
+  text-align: center;
+  width: 7rem;
+}
