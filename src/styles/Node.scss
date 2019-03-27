@@ -1,0 +1,40 @@
+@mixin square {
+  width: 36px;
+  height: 48px;
+}
+
+.Node {
+  .box {
+    background: darkgray;
+    display: inline-block;
+    border-radius: 8px;
+    margin: 2px;
+    &.zero {
+      @include square;
+    }
+    &.one {
+      @include square;
+    }
+    &.two {
+      @include square;
+    }
+    &.three {
+      @include square;
+    }
+    &.four {
+      @include square;
+    }
+    &.five {
+      @include square;
+    }
+    &.six {
+      @include square;
+    }
+    &.seven {
+      @include square;
+    }
+  }
+  .click {
+    background: gray;
+  }
+}
