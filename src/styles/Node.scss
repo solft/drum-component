@@ -1,14 +1,17 @@
 @mixin square {
-  width: 36px;
-  height: 48px;
+  width: 24px;
+  height: 36px;
 }
+
+$click: #696969;
+$nonClick: #CECECE;
 
 .Node {
   .box {
-    background: darkgray;
+    background: $nonClick;
     display: inline-block;
     border-radius: 8px;
-    margin: 2px;
+    margin: 1px;
     &.zero {
       @include square;
     }
@@ -35,6 +38,6 @@
     }
   }
   .click {
-    background: gray;
+    background: $click;
   }
 }

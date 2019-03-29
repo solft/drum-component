@@ -6,7 +6,7 @@ import Node from './Node'
 class Pad extends Component {
   render() {
     return (
-      <div>
+      <div className="pad">
         <Node/>
         <Node/>
         <Node/>
