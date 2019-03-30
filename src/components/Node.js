@@ -22,11 +22,20 @@ class Node extends Component {
   }
 
   toggleButton = (index, e) => {
+    console.log(`padNum = ${this.props.padNum}`)
+    console.log(`nodeNum = ${this.props.nodeNum}`)
+    console.log(`index = ${index}`)
     let changeNode = this.state.node
     changeNode[index] = !changeNode[index]
     this.setState({
       node: changeNode
     })
+
+    this.props.changeState(this.props.nodeNum, this.props.padNum*8 + index)
+  }
+
+  testHandler = () => {
+    //this.props.changeState()
   }
 
   render() {

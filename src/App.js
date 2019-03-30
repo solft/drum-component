@@ -3,8 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlay, faDownload, faPlus, faRedoAlt } from '@fortawesome/free-solid-svg-icons'
 
 
-import Track from './components/Track'
-import MusicController from './components/MusicController'
+import Player from './components/Player'
 import './styles/App.scss'
 
 library.add(faPlay)
@@ -18,9 +17,7 @@ class App extends Component {
       <div className="App">
         <h1>Jahong</h1>
 
-        <Track />
-
-        <MusicController />
+        <Player />
       </div>
     );
   }
