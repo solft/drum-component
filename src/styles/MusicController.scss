@@ -4,5 +4,32 @@
 }
 
 .btn {
+  height: 80px;
+  width: 80px;
+  border: none;
+  background: none;
+  cursor: pointer;
   margin-right: 40px;
+  &:focus {
+    outline: 2px dashed #17171D;
+  }
+  &:hover {
+    svg {
+      transform: scale(1.1);
+    }
+  }
+  &:active {
+    svg {
+      transform: scale(0.9);
+    }
+  }
+  &::-moz:focus:inner {
+    border: 0;
+  }
+  svg {
+    outline: none;
+    // transition: transform 0.3s linear;
+    color: tomato;
+  }
+  // border-radius: 50%;
 }
