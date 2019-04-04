@@ -8,9 +8,19 @@ class MusicController extends Component {
   constructor(props) {
     super(props)
     this.handlePlay = this.handlePlay.bind(this)
+    this.handleRedo = this.handleRedo.bind(this)
+    this.handlePlus = this.handlePlus.bind(this)
   }
 
   handlePlay() {
+    this.props.playMusic()
+  }
+
+  handleRedo() {
+    this.props.generateMusic()
+  }
+
+  handlePlus() {
     this.props.printState()
   }
   
@@ -20,10 +30,10 @@ class MusicController extends Component {
         <button className="btn" onClick={this.handlePlay}>
           <FontAwesomeIcon icon="play" className="fa-6x" />
         </button>
-        <button className="btn">
+        <button className="btn" onClick={this.handleRedo}>
           <FontAwesomeIcon icon="redo-alt" className="fa-6x" />
         </button>
-        <button className="btn">
+        <button className="btn" onClick={this.handlePlus}>
           <FontAwesomeIcon icon="plus" className="fa-6x" />
         </button>
         <button className="btn">
