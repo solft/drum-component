@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Tone from 'tone'
 import * as mm from '@magenta/music'
+import { drum_to_note } from '../utils/converter'
 
 import Track from './Track'
 import MusicController from './MusicController'
@@ -14,6 +15,11 @@ import openhat from '../drum/openhat-808.wav'
 import perc from '../drum/perc-808.wav'
 import snare from '../drum/snare-808.wav'
 import tom from '../drum/tom-808.wav'
+
+// TODO [악기, 시간]인 2차원 배열을 notes로 변환하는 함수 만들기
+// FIXME mm.sequences.quantizeNoteSequence를 거치면 startStep과 endStep이 0,1로 고정된다. 
+// => startTime과 endTime이 없어서 그런듯. quantize되어 있는 Note는 변환할 필요가 없다는 말.
+// => 입력 startTime과 endTime이 정렬되어 있지 않아도 동작함
 
 // Player 9x64 배열을 가지고 있어야함
 class Player extends Component {
@@ -178,32 +184,58 @@ class Player extends Component {
           {pitch: 64, startTime: 5.5, endTime: 6.0},
           {pitch: 62, startTime: 6.0, endTime: 6.5},
           {pitch: 62, startTime: 6.5, endTime: 7.0},
-          {pitch: 60, startTime: 7.0, endTime: 8.0},  
+          {pitch: 60, startTime: 7.0, endTime: 8.0},
         ],
         totalTime: 8
       },
-      results: {}
+      results: {},
+      final: {},
+      notes: []
     }
+
+    this.state.drumRNN.initialize()
   }
 
   playMusic = () => {
-    this.state.sound.clapSound.start()
+    // this.state.sound.clapSound.start()
+    console.log('converter test')
+    var temp = drum_to_note(this.state.melody)
+    console.log(temp)
+    this.setState({
+      notes: temp
+    })
   }
 
   printState = () => {
     console.log(this.state.melody[0])
-    console.log(this.state.melody[1])
-    console.log(this.state.melody[2])
-    console.log(this.state.melody[3])
-    console.log(this.state.melody[4])
-    console.log(this.state.melody[5])
-    console.log(this.state.melody[6])
-    console.log(this.state.melody[7])
-    console.log(this.state.melody[8])
+    // console.log(this.state.melody[1])
+    // console.log(this.state.melody[2])
+    // console.log(this.state.melody[3])
+    // console.log(this.state.melody[4])
+    // console.log(this.state.melody[5])
+    // console.log(this.state.melody[6])
+    // console.log(this.state.melody[7])
+    // console.log(this.state.melody[8])
+    console.log(this.state.results)
+    console.log(this.state.final)
+    console.log(this.state.notes)
   }
 
-  generateMusic = () => {
+  generateMusic = async () => {
     console.log('start make music')
+    let cur_seq = this.state.results
+
+    var predicted_sequence = await this.state.drumRNN.continueSequence(cur_seq, 20, 1).then(r => this.setState({ final: r }))
+    console.log(predicted_sequence)
+  }
+
+  // index 0~8, time 0~63
+  // <Node />에서 버튼하나 클리하면 여기까지 이게 실행되어 해당 위치의 값을 반전시키고 상태를 변경함
+  changeState = (index, time) => {
+    console.log(`index = ${index}, time = ${time}`)
+    let changeMelody = this.state.melody
+    changeMelody[index][time] = changeMelody[index][time] ? 0 : 1
+
     const temp = mm.sequences.quantizeNoteSequence(
       {
         ticksPerQuarter: 220,
@@ -225,21 +257,10 @@ class Player extends Component {
       },
       1
     )
-    this.setState({
-      results: temp
-    })
-    console.log(temp)
-    console.log(this.state.results)
-  }
 
-  // index 0~8, time 0~63
-  // <Node />에서 버튼하나 클리하면 여기까지 이게 실행되어 해당 위치의 값을 반전시키고 상태를 변경함
-  changeState = (index, time) => {
-    console.log(`index = ${index}, time = ${time}`)
-    let changeMelody = this.state.melody
-    changeMelody[index][time] = changeMelody[index][time] ? 0 : 1
     this.setState({
-      melody: changeMelody
+      melody: changeMelody,
+      results: temp
     })
   }
   
