@@ -253,7 +253,7 @@ class Player extends Component {
             qpm: 120
           }
         ],
-        notes: this.state.twinkle.notes
+        notes: this.state.notes
       },
       1
     )

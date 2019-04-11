@@ -79,7 +79,7 @@ function drum_to_note(pitch_by_time_array) {
     for (let pitch = 0; pitch < pitch_by_time_array.length; pitch++) {
 			if(pitch_by_time_array[pitch][time]){
 				result_notes[note_index] = {};
-				result_notes[note_index]['pitch'] = midiDrums[pitch]; // FIXME 아마 에러가 날 확률이 큼
+				result_notes[note_index]['pitch'] = midiDrums[pitch];
 				result_notes[note_index]['startTime'] = time * 0.5;
 				result_notes[note_index]['endTime'] = (time + 1) * 0.5;
 				note_index++;
