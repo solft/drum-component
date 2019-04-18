@@ -2,15 +2,15 @@ import { observable, action } from 'mobx'
 
 export default class MelodyStore {
   @observable seedMelody = [
-    Array.apply(null, new Array(8)).map(Number.prototype.valueOf,0),
-    Array.apply(null, new Array(8)).map(Number.prototype.valueOf,0),
-    Array.apply(null, new Array(8)).map(Number.prototype.valueOf,0),
-    Array.apply(null, new Array(8)).map(Number.prototype.valueOf,0),
-    Array.apply(null, new Array(8)).map(Number.prototype.valueOf,0),
-    Array.apply(null, new Array(8)).map(Number.prototype.valueOf,0),
-    Array.apply(null, new Array(8)).map(Number.prototype.valueOf,0),
-    Array.apply(null, new Array(8)).map(Number.prototype.valueOf,0),
-    Array.apply(null, new Array(8)).map(Number.prototype.valueOf,0)
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
   ]
 
   constructor(root) {

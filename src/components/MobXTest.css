@@ -1,0 +1,14 @@
+.state0 {
+  border: none;
+  padding: 10px 10px;
+  margin: 2px;
+  border-radius: 20%;
+}
+
+.state1 {
+  border: none;
+  padding: 10px 10px;
+  margin: 2px;
+  border-radius: 20%;
+  background: lightblue;
+}
